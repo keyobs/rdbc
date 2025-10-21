@@ -95,6 +95,8 @@ dist-ssr
 # VitePress
 **/.vitep**
 
+#ReactRouter types
+.react-router/
 
 # Project
 .notes.txt
