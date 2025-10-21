@@ -1,10 +1,12 @@
 {
   "name": "rdbc",
+  "author": "keyobs",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://keyobs.github.io/rdbc/",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
@@ -12,7 +14,7 @@
     "format": "biome format --write",
     "prepare": "husky",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,less}": [
