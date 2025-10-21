@@ -1,12 +1,11 @@
-import './App.css'
+import "./App.css";
 
 function App() {
-
   return (
-    <div>
-     hop
+    <div id="app-container">
+      <main id="app-content">hop</main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

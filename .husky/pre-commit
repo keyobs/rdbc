@@ -1,1 +1,19 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+echo "🔍 Running lint-staged..."
 pnpm exec lint-staged
+
+if [ "$branch" = "main" ] || [ "$branch" = "develop" ]; then
+  echo "🧪 Running tests for $branch..."
+  if ! pnpm test; then
+    echo "❌ Tests failed. Commit aborted on $branch."
+    exit 1
+  fi
+else
+  echo "⏭️  Skipping tests on branch '$branch'."
+fi
+
+echo "✅ Commit checks passed."

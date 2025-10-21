@@ -1,0 +1,14 @@
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+echo "🧪 Running tests before pushing..."
+
+if ! pnpm test; then
+  if [ "$branch" = "main" ]|| [ "$branch" = "develop" ]; then
+    echo "❌ Tests failed. Push aborted on $branch."
+    exit 1
+  else
+    echo "⚠️ Tests failed, but push will continue on branch $branch."
+  fi
+else
+  echo "✅ Tests passed."
+fi
